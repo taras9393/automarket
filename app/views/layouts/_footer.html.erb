@@ -10,6 +10,9 @@
           <button type="button" class="btn btn-outline-light btn-rounded">
             Sign up!
           </button>
+          <%= link_to "testpage", test_path %>
+          <%= link_to "Edit user", edit_user_registration_path %>
+          <%= link_to "Sign out", destroy_user_session_path, method: :delete, data: { confirm: "You want to exit?" } %>
         </p>
       </section>
       <!-- Section: CTA -->
