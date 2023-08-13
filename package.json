@@ -1,5 +1,7 @@
 {
   "name": "automarket",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "jquery": "^3.7.0"
+  }
 }
