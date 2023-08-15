@@ -4,25 +4,22 @@
     <!-- Grid container -->
     <div class="container p-4 pb-0">
       <!-- Section: CTA -->
-      <section class="">
         <p class="d-flex justify-content-center align-items-center">
-          <span class="me-3">Register for free</span>
-          <button type="button" class="btn btn-outline-light btn-rounded">
-            Sign up!
-          </button>
+          <span class="me-3">Join to us now. Register for free</span>
+          <%= link_to "Sign up!", new_user_registration_path, class: "btn btn-outline-light btn-rounded", type: "button" %>
+        </p>
+
           <%= link_to "testpage", test_path %>
           <%= link_to "Edit user", edit_user_registration_path %>
           <%= link_to "Sign out", destroy_user_session_path, method: :delete, data: { confirm: "You want to exit?" } %>
-        </p>
-      </section>
+
       <!-- Section: CTA -->
     </div>
     <!-- Grid container -->
 
     <!-- Copyright -->
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-      © 2020 Copyright:
-      <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+      © <%= Date.today.year %> Copyright: <%= link_to "Automarket.ua", root_path, class: "text-white" %>
     </div>
     <!-- Copyright -->
   </footer>

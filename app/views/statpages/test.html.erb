@@ -38,3 +38,83 @@
     </div>
   </div>
 </section>
+
+                                                        <h3>SEARCH</h3>
+
+<div class="container">
+  <h2>Filter Anything</h2>
+  <p>Type something in the input field to search for a specific text inside the div element with id="myDIV":</p>
+  <input class="form-control" id="myInput" type="text" placeholder="Search..">
+  <div id="myDIV">
+    <p>I am a paragraph.</p>
+    <div>I am a div element inside div.</div>
+    <button class="btn">I am a button</button>
+    <button class="btn btn-info">Another button</button>
+    <p>Another paragraph.</p>
+  </div>
+</div>
+
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myDIV *").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+
+
+
+<div class="row">
+  <div class="col-sm-2" style="background-color:lavender; text-align:center;">
+    <h1>Zalupa Koncena</h1>
+    <p>Suka nahui blyad'</p>
+  </div>
+<div class="col-sm-3" style="background-color:lavenderblush;"><h2>Hueta hueta hueta</h2></div>
+</div>
+
+
+
+
+
+
+
+
+<div class="dropdown">
+  <a
+    class="dropdown-toggle d-flex align-items-center hidden-arrow"
+    href="#"
+    id="navbarDropdownMenuAvatar"
+    role="button"
+    data-mdb-toggle="dropdown"
+    aria-expanded="false"
+  >
+    <img
+      src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
+      class="rounded-circle"
+      height="25"
+      alt="Black and White Portrait of a Man"
+      loading="lazy"
+    />
+  </a>
+
+
+
+
+  <ul
+    class="dropdown-menu dropdown-menu-end"
+    aria-labelledby="navbarDropdownMenuAvatar"
+  >
+    <li>
+      <a class="dropdown-item" href="#">My profile</a>
+    </li>
+    <li>
+      <a class="dropdown-item" href="#">Settings</a>
+    </li>
+    <li>
+      <a class="dropdown-item" href="#">Logout</a>
+    </li>
+  </ul>
+</div>
