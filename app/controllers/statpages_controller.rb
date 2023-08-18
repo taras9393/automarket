@@ -3,7 +3,8 @@ class StatpagesController < ApplicationController
   end
 
   def test
+    @users = User.all
   end
-  
+
 
 end

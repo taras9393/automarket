@@ -1,0 +1,35 @@
+<% provide(:title, "New bicycle")%>
+<section class="vh-100" style="background-color: #508bfc;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card shadow-2-strong" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+<h3>Create new bicycle</h3>
+<hr><br>
+<%= form_for(@bike, html: {multipart: true}) do |f| %>
+  <%= render 'layouts/error_bike_messages' %>
+
+  <div class="form-outline mb-4">
+  <%= f.label :name, 'Enter name' %><br>
+  <%= f.text_field :name, class: 'form-control form-control-lg' %><br>
+  </div>
+
+  <div class="form-outline mb-4">
+  <%= f.label :description, 'Please, add description' %><br>
+  <%= f.text_area :description, class: 'form-control form-control-lg', placeholder: "Add some words..." %><br>
+  </div>
+
+  <div class = "picture">
+  <%= f.file_field :picture, accept: 'image/jpeg, image/gif, image/png' %><br>
+  </div>
+  <br>
+  <%= f.submit "Create post", class: "btn btn-primary btn-lg btn-block my-button" %>
+
+<% end %>
+      </div>
+     </div>
+    </div>
+    </div>
+  </div>
+</section>
