@@ -1,87 +1,40 @@
 <% provide(:title, "All bicycles") %>
 <div id="top"></div>
-<input class="form-control" id="myInput" type="text" placeholder="Search..">
+<%= will_paginate @bikes, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
 <% @bikes.each do |bike| %>
 <div class="container">
-<div class="jumbotron">
-<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-<div class="col">
-  <div class="card shadow-sm">
-    <% if bike.picture? %>
-    <%= image_tag(bike.picture.url) if bike.picture? %>
-    <% else %>
-    <%= image_tag "unknown.png" %>
-    <% end %>
-
-      <div class="card-body">
-      <p class="card-text text-center"><b><%= bike.name %></b></p>
-      <% if bike.description.to_s.length < 141 %>
-        <p><%= bike.description %></p>
-      <% else %>
-        <p><%= bike.description.first(140) %><%= link_to "view full", bicycle_path(bike.id) %></p>
-        <% end %>
-      <div class="d-flex justify-content-between align-items-center">
-        <div class="btn-group">
-          <%= link_to "View", bicycle_path(bike.id), class: "btn btn-sm btn-outline-secondary", type: "button" %>
-          <%= link_to "Edit", edit_bicycle_path(bike.id), class: "btn btn-sm btn-outline-secondary", type: "button" %>
-        </div>
-        <div class = "timestamp text-muted">Add <%= time_ago_in_words(bike.created_at) %> ago.</div>
+  <div class="jumbotron">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <div class="col">
+        <div class="card shadow-sm">
+            <% if bike.picture? %>
+          <%= image_tag(bike.picture.url, height: "225px") if bike.picture? %>
+            <% else %>
+          <%= image_tag "unknown.png" %>
+            <% end %>
+          <div class="card-body">
+            <p class="card-text text-center"><b><%= bike.name %></b></p>
+              <% if bike.description.to_s.length < 141 %>
+            <p><%= bike.description %></p>
+              <% else %>
+            <p><%= bike.description.first(140) %><%= link_to "..read more", bicycle_path(bike.id) %></p>
+              <% end %>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <%= link_to "View bike", bicycle_path(bike.id), class: "btn btn-sm btn-outline-secondary", type: "button" %>
+                    <% if can? :destroy, bike %>
+                  <%= link_to "Delete bike", bicycle_path(bike.id), class: "btn btn-sm btn-outline-primary", method: :delete %>
+                    <% end%>
+                </div>
+                <div class = "timestamp text-muted">Add <%= time_ago_in_words(bike.created_at) %> ago.</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
-</div>
+   </div>
 </div>
 <br>
   <% end %>
-<%= link_to "On top", '#top'%>
-
-<script>
-$(document).ready(function(){
-  $("#myInput").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#myDIV *").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
-});
-</script>
-
-
-<div class="container">
-<div class="jumbotron">
-<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-  <div class="col">
-    <div class="card shadow-sm">
-      <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-      <div class="card-body">
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <div class="d-flex justify-content-between align-items-center">
-          <div class="btn-group">
-            <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-            <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-          </div>
-          <small class="text-muted">9 mins</small>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card shadow-sm">
-      <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-      <div class="card-body">
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <div class="d-flex justify-content-between align-items-center">
-          <div class="btn-group">
-            <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-            <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-          </div>
-          <small class="text-muted">9 mins</small>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-</div>
+<%= link_to t('link.top'), '#top', class: "btn btn-secondary", type: "button" %>
+<%= will_paginate @bikes, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>

@@ -1,10 +1,8 @@
 <% if @bike.errors.any? %>
-
 <p> You have <%= pluralize(@bike.errors.count, "mistake") %></p>
     <ul>
       <% @bike.errors.full_messages.each do |msg| %>
       <li class = red-alert><%= msg %></li>
       <% end %>
     </ul>
-
 <% end %>

@@ -1,5 +1,8 @@
 class BicyclesController < ApplicationController
 
+  before_action :authenticate_user!, except: [:index, :show]
+
+
   def new
     @bike = Bicycle.new
   end
@@ -16,6 +19,7 @@ class BicyclesController < ApplicationController
 
   def edit
     @bike = Bicycle.find(params[:id])
+    redirect_to root_path unless can? :edit, @bike
   end
 
   def update
@@ -29,16 +33,23 @@ class BicyclesController < ApplicationController
 
   def destroy
     @bike = Bicycle.find(params[:id])
+      if can? :destroy, @bike
     @bike.destroy
     redirect_to bicycles_path
+      else
+    redirect_to root_path
+      end
   end
 
   def index
-    @bikes = Bicycle.all
+    @bikes = Bicycle.paginate(page: params[:page], per_page: 4).accessible_by(current_ability)
   end
 
   def show
     @bike = Bicycle.find(params[:id])
+    unless can? :show, @bike
+      redirect_to bicycles_path
+    end
   end
 
   def bicycle_params

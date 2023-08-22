@@ -1,44 +1,27 @@
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <!-- Container wrapper -->
+<nav class="navbar navbar-expand-lg navbar-light bg-head">
   <div class="container-fluid">
-
-    <!-- Collapsible wrapper -->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-      <!-- Navbar brand -->
       <%= link_to image_tag("mdb.jpg", height: "25", width: "125",
       alt: "MDB Logo", loading: "lazy"), root_path, class: "navbar-brand mt-2 mt-lg-0" %>
-
-      <!-- Left links -->
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 marg-left">
         <li class="nav-item"><%= link_to "Home", root_path, class: "nav-link" %></li>
-        <li class="nav-item"><%= link_to "Edit bicycle", '#', class: "nav-link" %></li>
-        <li class="nav-item"><%= link_to "Team", "#", class: "nav-link" %></li>
-        <li class="nav-item my-btn"><%= link_to "Add new bicycle", new_bicycle_path, class: "nav-link" %></li>
+        <li class="nav-item"><%= link_to "Our contacts", contacts_path, class: "nav-link" %></li>
+        <li class="nav-item"><%= link_to "History of bicycles", history_path, class: "nav-link" %></li>
+        <li class="nav-item my-btn"><%= link_to "Pricing", price_path, class: "nav-link" %></li>
         <li class="nav-item"><%= link_to "All bicycles", bicycles_path, class: "nav-link" %></li>
       </ul>
-      <!-- Left links -->
     </div>
-    <!-- Collapsible wrapper -->
-
-    <!-- Right elements -->
     <div class="d-flex align-items-center">
-
-        <!-- Login -->
-        <div class="marg-right">
+      <div class="marg-right">
           <% if !user_signed_in? %>
         <%= link_to "Login", new_user_session_path, class: "btn btn-secondary px-3 me-2", type: "button" %>
         <%= link_to "Sign up for free", new_user_registration_path, class: "btn btn-primary me-3", type: "button" %>
           <% else %>
-        <%= link_to "MY PROFILE", "#" %>
+        <%= link_to "My profile", user_path(current_user.id), class: "btn btn-info", type: "button" %>
+        <%= link_to "Add new bicycle", new_bicycle_path, class: "btn btn-warning", type: "button" %>
+        <%= link_to "Logout", destroy_user_session_path, method: :delete, data: { confirm: "You want to exit?" }, class: "btn btn-secondary", type: "button" %>
           <% end %>
-        </div>
-        <!-- Login -->
-
+      </div>
     </div>
-    <!-- Right elements -->
   </div>
-  <!-- Container wrapper -->
 </nav>
-<!-- Navbar -->

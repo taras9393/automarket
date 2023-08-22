@@ -1,26 +1,31 @@
 <div class="container">
-<div class="jumbotron">
-<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-<div class="col">
-  <div class="card shadow-sm">
-    <% if @bike.picture? %>
-    <%= image_tag(@bike.picture.url) if @bike.picture? %>
-    <% else %>
-    <%= image_tag "unknown.png" %>
-    <% end %>
-    <div class="card-body">
-      <p class="card-text text-center"><%= @bike.name %></p>
-      <p class="card-text"><%= @bike.description %></p>
-      <div class="d-flex justify-content-between align-items-center">
-        <div class="btn-group">
-          <%= link_to "Edit", "#", class: "btn btn-sm btn-outline-secondary", type: "button" %>
-          <%= link_to "Delete this bike", bicycle_path(@bike.id), class: "btn btn-sm btn-outline-primary", method: :delete %>
+  <div class="jumbotron">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <div class="col">
+        <div class="card shadow-sm">
+          <% if @bike.picture? %>
+            <%= image_tag(@bike.picture.url, height: "225px") if @bike.picture? %>
+          <% else %>
+            <%= image_tag "unknown.png" %>
+          <% end %>
+        <div class="card-body">
+          <p class="card-text text-center"><b><%= @bike.name %></b></p>
+          <p class="card-text"><%= @bike.description %></p>
+          <div class="d-flex justify-content-between align-items-center">
+          <div class="btn-group">
+              <% if can? :edit, @bike %>
+            <%= link_to "Edit bike", edit_bicycle_path(@bike.id), class: "btn btn-sm btn-outline-secondary", type: "button" %>
+              <% end %>
+              
+              <% if can? :destroy, @bike %>
+            <%= link_to "Delete bike", bicycle_path(@bike.id), class: "btn btn-sm btn-outline-primary", method: :delete %>
+              <% end%>
+          </div>
+          <div class = "timestamp text-muted">Add <%= time_ago_in_words(@bike.created_at) %> ago.</div>
         </div>
-        <div class = "timestamp text-muted">Add <%= time_ago_in_words(@bike.created_at) %> ago.</div>
+        </div>
       </div>
     </div>
   </div>
-</div>
-</div>
-</div>
+  </div>
 </div>
