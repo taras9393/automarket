@@ -41,11 +41,16 @@ gem 'bootstrap'
 gem 'will_paginate','3.1.7'
 gem 'bootstrap-will_paginate'
 gem 'will_paginate-bootstrap-style'
+gem "font-awesome-sass", "~> 6.4.2"
 gem 'jquery-rails'
+
 
 gem 'devise'
 gem 'carrierwave'
 gem 'cancancan'
+gem 'acts_as_votable', '~> 0.10.0'
+
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

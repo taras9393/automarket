@@ -16,13 +16,21 @@
               <% if can? :edit, @bike %>
             <%= link_to "Edit bike", edit_bicycle_path(@bike.id), class: "btn btn-sm btn-outline-secondary", type: "button" %>
               <% end %>
-              
+
               <% if can? :destroy, @bike %>
             <%= link_to "Delete bike", bicycle_path(@bike.id), class: "btn btn-sm btn-outline-primary", method: :delete %>
               <% end%>
           </div>
           <div class = "timestamp text-muted">Add <%= time_ago_in_words(@bike.created_at) %> ago.</div>
         </div>
+
+        <div class="votingBtn margin-top-md">
+             <%= link_to vote_bicycle_path(@bike.id), class: "btn btn-xs btn-default", method: 'put', remote: true do %>
+                 <i class="fa fa-thumbs-up "></i>
+             <% end %>
+            <span class="voteCount"><%= @bike.get_likes.count %></span>
+        </div>
+
         </div>
       </div>
     </div>

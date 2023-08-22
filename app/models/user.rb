@@ -4,5 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :bicycles, dependent: :destroy       
+  has_many :bicycles, dependent: :destroy
+
+  acts_as_voter    
 end

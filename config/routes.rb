@@ -2,7 +2,11 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :users, only: [:index, :show, :destroy]
-  resources :bicycles
+  resources :bicycles do
+    member do
+      put 'vote'
+    end
+  end    
 
   root 'statpages#home'
   get 'test' => 'statpages#test'

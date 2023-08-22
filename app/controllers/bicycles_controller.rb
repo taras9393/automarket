@@ -10,7 +10,7 @@ class BicyclesController < ApplicationController
   def create
     @bike = current_user.bicycles.new(bicycle_params)
     if @bike.save
-      redirect_to bicycles_path
+      redirect_to bicycles_path, notice: 'Bicycle was successfully added.'
     else
       render 'new'
     end
@@ -52,6 +52,19 @@ class BicyclesController < ApplicationController
     end
   end
 
+  def vote
+    @bike = Bicycle.find(params[:id])
+    if current_user.liked? @bike
+      @bike.unliked_by current_user
+    else
+      @bike.liked_by current_user
+    end
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  private
   def bicycle_params
     params.require(:bicycle).permit(:name, :description, :picture, :user_id)
   end
