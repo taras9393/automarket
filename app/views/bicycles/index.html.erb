@@ -12,7 +12,7 @@
             <% else %>
           <%= image_tag "unknown.png" %>
             <% end %>
-          <div class="card-body">
+          <div class="card-body card-bg">
             <p class="card-text text-center"><b><%= bike.name %></b></p>
               <% if bike.description.to_s.length < 141 %>
             <p><%= bike.description %></p>

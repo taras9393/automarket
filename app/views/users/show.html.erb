@@ -1,7 +1,7 @@
 <% provide(:title, "My profile") %>
 
 <div id="top"></div>
-<div class="marg-left">
+<div class="stngs">
   <%= link_to "Add new bicycle", new_bicycle_path, class: "btn btn-warning", type: "button" %>
   <%= link_to "Edit my account", edit_user_registration_path, class: "btn btn-info", type: "button" %>
 </div>
@@ -19,7 +19,7 @@
             <% else %>
           <%= image_tag "unknown.png" %>
             <% end %>
-          <div class="card-body">
+          <div class="card-body card-bg">
             <p class="card-text text-center"><b><%= bike.name %></b></p>
               <% if bike.description.to_s.length < 141 %>
             <p><%= bike.description %></p>
@@ -33,6 +33,12 @@
                   <%= link_to "Delete bike", bicycle_path(bike.id), class: "btn btn-sm btn-outline-primary", method: :delete %>
                 </div>
                   <div class = "timestamp text-muted">Add <%= time_ago_in_words(bike.created_at) %> ago.</div>
+              </div>
+              <div class="votingBtn margin-top-md">
+                   <%= link_to vote_bicycle_path(bike.id), class: "btn btn-xs btn-default", method: 'put', remote: true do %>
+                       <i class="fa fa-thumbs-up "></i>
+                   <% end %>
+                  <span class="voteCount"><%= bike.get_likes.count %></span>
               </div>
             </div>
           </div>
