@@ -6,7 +6,7 @@
   <%= link_to "Edit my account", edit_user_registration_path, class: "btn btn-info", type: "button" %>
 </div>
 <br>
-<h2 class="text-center">Your bicycles</h2><hr>
+<h2 class="text-center">Bicycles(<%= @user_bikes.count %>)</h2><hr>
 <%= will_paginate @user_bikes, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
 <% @user_bikes.each do |bike| %>
 <div class="container">
@@ -48,5 +48,6 @@
 </div>
 <br>
   <% end %>
+<hr>
 <%= link_to t('link.top'), '#top', class: "btn btn-secondary", type: "button" %>
 <%= will_paginate @user_bikes, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
