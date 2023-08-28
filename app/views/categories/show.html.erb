@@ -1,20 +1,9 @@
-<% provide(:title, "All bicycles") %>
 <div id="top"></div>
-
-<div class="input-group my-search">
-<%= search_form_for @q do |f| %>
-  <%= f.label :name_or_description_cont, "Find in name or description" %><br>
-  <%= f.search_field :name_or_description_cont, placeholder: "Find here...", class: "form-control rounded mb-2" %>
-  <%= f.submit "Search", class: "btn btn-outline-primary search-btn" %>
-<% end %>
-</div>
-
+<%= will_paginate @bikes, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
 <hr>
-
 <% @bikes.each do |bike| %>
 <div class="container">
   <div class="jumbotron">
-    <% if !current_user.liked?(bike) %>
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
       <div class="col">
         <div class="card shadow-sm">
@@ -53,10 +42,10 @@
           </div>
         </div>
       </div>
-      <% end %>
    </div>
 </div>
 <br>
   <% end %>
-
+  <%= will_paginate @bikes, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+<hr>
 <%= link_to t('link.top'), '#top', class: "btn btn-secondary", type: "button" %>

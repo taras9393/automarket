@@ -2,7 +2,7 @@ class Bicycle < ApplicationRecord
   belongs_to :user
   default_scope -> { order(created_at: :desc) }
 
-  has_many :categories
+  belongs_to :category
 
   mount_uploader :picture, PictureUploader
 
@@ -11,4 +11,5 @@ class Bicycle < ApplicationRecord
   validates :user_id, presence: true
 
   acts_as_votable
+
 end

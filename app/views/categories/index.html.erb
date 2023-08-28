@@ -1,0 +1,15 @@
+<% @catgs.each do |ct| %>
+<ul>
+  <li><%= link_to "#{ct.name}", category_path(ct.id), class: "btn btn-secondary" %>
+   <span class="badge badge-primary badge-pill bg-primary"><%= ct.bicycles.count %></span>
+   <%= link_to edit_category_path(ct.id) do %>
+    <i class="fa fa-pencil aria-hidden="true""></i>
+   <% end %>
+
+   <%= link_to category_path(ct.id), method: :delete do %>
+   <i class="fa fa-trash" aria-hidden="true"></i>
+   <% end %>
+  </li>
+</ul>
+<% end %>
+<%= link_to "Add new category", new_category_path, class: "btn btn-primary btn-xl rounded-pill mt-5" %>

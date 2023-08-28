@@ -15,10 +15,27 @@
   margin-right: 5px;
 }
 
+.fl-right {
+  float: right;
+  margin-left: 2px;
+}
+
 .green-notice {
   color: green;
   font-weight: bold;
   width: 300px;
+}
+
+.like-blue {
+  background: blue;
+}
+
+.like-grey {
+  background: grey;
+}
+
+.my-search {
+  margin-left: 100px;
 }
 
 .my-button{
@@ -46,4 +63,8 @@
   padding: 5px;
   width: 300px;
   margin-left: 770px
+}
+
+.search-btn {
+  width: 250px;
 }

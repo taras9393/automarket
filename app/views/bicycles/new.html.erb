@@ -19,6 +19,10 @@
                <%= f.text_area :description, class: 'form-control form-control-lg', placeholder: "Add some words..." %><br>
              </div>
 
+             <div>
+               <%= f.collection_select :category_id, Category.all, :id, :name %><br>
+             </div>
+
              <div class = "picture">
                <%= f.file_field :picture, accept: 'image/jpeg, image/gif, image/png' %><br>
              </div><br>

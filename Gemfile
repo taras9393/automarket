@@ -49,7 +49,7 @@ gem 'devise'
 gem 'carrierwave'
 gem 'cancancan'
 gem 'acts_as_votable', '~> 0.10.0'
-
+gem 'ransack'
 
 
 group :development, :test do

@@ -36,7 +36,11 @@
               </div>
               <div class="votingBtn margin-top-md">
                    <%= link_to vote_bicycle_path(bike.id), class: "btn btn-xs btn-default", method: 'put', remote: true do %>
-                       <i class="fa fa-thumbs-up "></i>
+                      <% if current_user.liked?(bike) %>
+                        <i class="fa-solid fa-heart"></i>
+                      <% else %>
+                        <i class="fa-regular fa-heart"></i>
+                      <% end %>
                    <% end %>
                   <span class="voteCount"><%= bike.get_likes.count %></span>
               </div>

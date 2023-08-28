@@ -6,7 +6,9 @@ Rails.application.routes.draw do
     member do
       put 'vote'
     end
-  end    
+  end
+
+  resources :categories
 
   root 'statpages#home'
   get 'test' => 'statpages#test'

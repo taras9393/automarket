@@ -23,9 +23,13 @@
 </div>
 
 
-
+<%= link_to "new catg bikes", new_category_path, class: "btn btn-primary btn-xl rounded-pill mt-5" %>
 <!--
              <div>
                 f.select :category, options_for_select(["Mountain", "Retrobike", "Road", "BMX", "Touring"], "Road") %><br>
               </div>
+
+
+
+              < will_paginate @bikes, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
 -->

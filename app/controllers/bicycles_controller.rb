@@ -42,7 +42,8 @@ class BicyclesController < ApplicationController
   end
 
   def index
-    @bikes = Bicycle.paginate(page: params[:page], per_page: 4).accessible_by(current_ability)
+    @q = Bicycle.ransack(params[:q])
+    @bikes = @q.result.accessible_by(current_ability)
   end
 
   def show
@@ -66,6 +67,6 @@ class BicyclesController < ApplicationController
 
   private
   def bicycle_params
-    params.require(:bicycle).permit(:name, :description, :picture, :user_id, :category)
+    params.require(:bicycle).permit(:name, :description, :picture, :user_id, :category_id)
   end
 end
