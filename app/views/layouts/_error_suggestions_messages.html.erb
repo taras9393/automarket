@@ -1,0 +1,8 @@
+<% if @sug.errors.any? %>
+<p> You have <%= pluralize(@sug.errors.count, "mistake") %></p>
+    <ul>
+      <% @sug.errors.full_messages.each do |msg| %>
+      <li class = red-alert><%= msg %></li>
+      <% end %>
+    </ul>
+<% end %>

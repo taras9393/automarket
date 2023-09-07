@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   def show
     @user_bikes = current_user.bicycles.paginate(page: params[:page], per_page: 3)
+    @user = User.find(params[:id])
   end
 
   def destroy

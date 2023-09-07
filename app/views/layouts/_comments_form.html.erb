@@ -1,0 +1,14 @@
+<%= form_for([@bike, @bike.comments.build]) do |form| %>
+
+<div class="mb-3">
+  <%= form.label :author, "Who you are?", class: "form-label" %>
+  <%= form.text_field :author, class: "form-control", placeholder: "Your name or nick" %>
+</div>
+
+  <div class="mb-3">
+    <%= form.label :body, "Write some words: ", class: "form-label" %>
+    <%= form.text_area :body, class: "form-control", placeholder: "Comment message" %>
+  </div>
+
+  <%= form.submit "Enter comment", class: "btn btn-primary" %>
+<% end %>

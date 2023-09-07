@@ -52,7 +52,7 @@
             <% if @bike.first.picture? %>
           <%= image_tag(@bike.first.picture.url, height: "225px") if @bike.first.picture? %>
             <% else %>
-          <%= image_tag "unknown.png" %>
+          <%= image_tag "unknown.png", height: "225px" %>
             <% end %>
           <div class="card-body">
             <p class="card-text text-center"><b><%= @bike.first.name %></b></p>
@@ -74,7 +74,7 @@
         <div class="col">
           <div class="card shadow-sm">
               <% if @bike.second.picture? %>
-            <%= image_tag(@bike.second.picture.url, height: "225px") if @bike.second.picture? %>
+            <%= image_tag(@bike.second.picture.url, height: "225px", height: "225px") if @bike.second.picture? %>
               <% else %>
             <%= image_tag "unknown.png" %>
               <% end %>
@@ -101,7 +101,7 @@
                 <% if @bike.third.picture? %>
               <%= image_tag(@bike.third.picture.url, height: "225px") if @bike.third.picture? %>
                 <% else %>
-              <%= image_tag "unknown.png" %>
+              <%= image_tag "unknown.png", height: "225px" %>
                 <% end %>
               <div class="card-body">
                 <p class="card-text text-center"><b><%= @bike.third.name %></b></p>

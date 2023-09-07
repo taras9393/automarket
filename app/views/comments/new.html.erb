@@ -1,0 +1,11 @@
+<%= form_for([@bike, @bike.comments.build]) do |form| %>
+
+  <div class="mb-3">
+    <%= form.label :body, "Comment message", class: "form-label" %>
+    <%= form.text_area :body, class: "form-control" %>
+  </div>
+
+  <%= form.submit "Enter comment", class: "btn btn-primary" %>
+<% end %>
+
+<!-- model: [idea, idea.comments.build] -->

@@ -1,6 +1,6 @@
 class BicyclesController < ApplicationController
 
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!
 
 
   def new
@@ -51,6 +51,8 @@ class BicyclesController < ApplicationController
     unless can? :show, @bike
       redirect_to bicycles_path
     end
+    @comments = @bike.comments
+    @sugs = @bike.suggestions
   end
 
   def vote

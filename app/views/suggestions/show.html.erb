@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="jumbotron">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <div class="col">
+        <div class="card shadow-sm">
+          <% if @sug.picture? %>
+            <%= image_tag(@sug.picture.url, height: "225px") %>
+          <% else %>
+            <%= image_tag "unknown.png" %>
+          <% end %>
+        <div class="card-body card-bg">
+          <p class="card-text text-center"><b><%= @sug.name %></b></p>
+          <p class="card-text"><%= @sug.description %></p>
+          <div class="d-flex justify-content-between align-items-center">
+          <div class = "timestamp text-muted">Add <%= time_ago_in_words(@sug.created_at) %> ago.</div>
+          </div>
+        </div><br>
+        <%= link_to "Accept suggestion", "#", class: "btn btn-sm btn-outline-success", type: "button" %>
+        <%= link_to "Decline", "#", class: "btn btn-sm btn-outline-danger", type: "button" %>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

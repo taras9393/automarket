@@ -32,8 +32,11 @@ class Ability
     can :read, Bicycle, :all
 
     return unless user.present?
-    
+
     can :update, Bicycle, user_id: user.id
     can :destroy, Bicycle, user_id: user.id
+    
+    can :destroy, Suggestion, user_id: user.id
+    can :accept, Suggestion, user_id: user.id
   end
 end
