@@ -17,7 +17,7 @@ class SuggestionsController < ApplicationController
 
   def create
     @bike = Bicycle.find(params[:bicycle_id])
-    @sug = @bike.suggestions.new(suggestion_params)
+    @sug = Suggestion.new(suggestion_params.merge!(:bicycle_id => @bike.id))
     if @sug.save
       redirect_to bicycle_path(@bike.id), notice: 'Suggestion was successfully create'
     else
@@ -27,7 +27,7 @@ class SuggestionsController < ApplicationController
 
   def destroy
     @bike = Bicycle.find(params[:bicycle_id])
-    @sug = @bike.suggestions.find(params[:id])
+    @sug = Suggestion.find(params[:id])
       if can? :destroy, @sug
     @sug.destroy
     redirect_to bicycle_path(@bike.id), notice: "Nice destroy"
@@ -39,7 +39,7 @@ class SuggestionsController < ApplicationController
   def accept
 
     @bike = Bicycle.find(params[:bicycle_id])
-    @sug = @bike.suggestions.find(params[:id])
+    @sug = Suggestion.find(params[:id])
     @bike.update_attributes(name: @sug.name, description: @sug.description, picture: @sug.picture)
 
 
@@ -49,6 +49,7 @@ class SuggestionsController < ApplicationController
   #@bike.description = @sug.description
   #@bike.picture = @sug.picture
   #if @bike.save
+  @sug.destroy
   redirect_to bicycle_path(@bike.id), notice: "Nice change"
 
 
@@ -59,7 +60,7 @@ class SuggestionsController < ApplicationController
 
   private
   def suggestion_params
-    params.require(:suggestion).permit(:name, :description, :picture, :bicycle_id)
+    params.require(:suggestion).permit(:name, :description, :picture)
   end
 
 end

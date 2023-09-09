@@ -43,7 +43,7 @@ class BicyclesController < ApplicationController
 
   def index
     @q = Bicycle.ransack(params[:q])
-    @bikes = @q.result.accessible_by(current_ability)
+    @bikes = @q.result.accessible_by(current_ability).paginate(page: params[:page], per_page: 4)
   end
 
   def show
@@ -52,7 +52,7 @@ class BicyclesController < ApplicationController
       redirect_to bicycles_path
     end
     @comments = @bike.comments
-    @sugs = @bike.suggestions
+    @sug = @bike.suggestion
   end
 
   def vote

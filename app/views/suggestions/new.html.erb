@@ -6,7 +6,7 @@
         <div class="card shadow-2-strong" style="border-radius: 1rem;">
           <div class="card-body p-5 text-center">
             <h3>Create new suggestions</h3><hr><br>
-            <%= form_for([@bike, @bike.suggestions.build], html: {multipart: true}) do |f| %>
+            <%= form_for([@bike, @sug], html: {multipart: true}) do |f| %>
             <%= render 'layouts/error_suggestions_messages' %>
 
              <div class="form-outline mb-4">
@@ -19,7 +19,11 @@
                <%= f.text_area :description, class: 'form-control form-control-lg', placeholder: "Add some words...", value: @bike.description %><br>
              </div>
 
-             <%= f.submit "Create post", class: "btn btn-primary btn-lg btn-block my-button" %>
+             <div class = "picture">
+               <%= f.file_field :picture, accept: 'image/jpeg, image/gif, image/png' %><br>
+             </div><br>
+
+             <%= f.submit "Send updates", class: "btn btn-primary btn-lg btn-block my-button" %>
 
              <% end %>
       </div>

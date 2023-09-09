@@ -3,7 +3,7 @@ class Bicycle < ApplicationRecord
   default_scope -> { order(created_at: :desc) }
 
   belongs_to :category
-  has_many :suggestions
+  has_one :suggestion
   has_many :comments
 
   mount_uploader :picture, PictureUploader

@@ -62,31 +62,29 @@
 <br><br>
 
 
-  <% if @sugs.any? %>
-  <% @sugs.each do |sug| %>
-  <% if can? :destroy, sug %>
+  <% if @sug.present? %>
+  <% if can? :destroy, @sug %>
   <h1>Suggestions: </h1>
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
     <div class="col">
       <div class="card shadow-sm">
-        <% if sug.picture? %>
-          <%= image_tag(sug.picture.url, height: "225px") %>
+        <% if @sug.picture? %>
+          <%= image_tag(@sug.picture.url, height: "225px") %>
         <% else %>
-          <%= image_tag "unknown.png" %>
+          <%= image_tag "unknown.png", height: "225px" %>
         <% end %>
       <div class="card-body card-bg">
-        <p class="card-text text-center"><b><%= sug.name %></b></p>
-        <p class="card-text"><%= sug.description %></p>
+        <p class="card-text text-center"><b><%= @sug.name %></b></p>
+        <p class="card-text"><%= @sug.description %></p>
         <div class="d-flex justify-content-between align-items-center">
-        <div class = "timestamp text-muted">create <%= time_ago_in_words(sug.created_at) %> ago.</div>
+        <div class = "timestamp text-muted">create <%= time_ago_in_words(@sug.created_at) %> ago.</div>
         </div>
       </div><br>
-      <%= link_to "Accept suggestion", accept_bicycle_suggestion_path(@bike.id, sug.id), method: :put, class: "btn btn-sm btn-outline-success", type: "button" %>
-      <%= link_to "Decline", bicycle_suggestion_path(@bike.id, sug.id), method: :delete, class: "btn btn-sm btn-outline-danger", type: "button" %>
+      <%= link_to "Accept suggestion", accept_bicycle_suggestion_path(@bike.id, @sug.id), method: :put, class: "btn btn-sm btn-outline-success", type: "button" %>
+      <%= link_to "Decline", bicycle_suggestion_path(@bike.id, @sug.id), method: :delete, class: "btn btn-sm btn-outline-danger", type: "button" %>
     </div>
   </div>
 </div>
-<% end %>
 <% end %>
   <% else %>
   <em>No Suggestions at this moment</em>
